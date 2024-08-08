@@ -1,14 +1,5 @@
 
 services:
-  # init-service:
-  #   build: ./init-service
-  #   container_name: init-service
-  #   depends_on:
-  #     - mysql
-  #     - mongodb
-  #     - elasticsearch
-  #     - kafka
-
   mysql:
     image: mysql
     container_name: mysql

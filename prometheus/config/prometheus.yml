@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'quarkus'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets:
+        - 'localhost:8081'
+        - 'localhost:8191'
+        - 'localhost:8192'
+        - 'localhost:8193'

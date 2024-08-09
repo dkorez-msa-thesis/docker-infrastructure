@@ -6,7 +6,7 @@ scrape_configs:
     metrics_path: '/metrics'
     static_configs:
       - targets:
-        - 'localhost:8081'
-        - 'localhost:8191'
-        - 'localhost:8192'
-        - 'localhost:8193'
+        - 'host.docker.internal:8081'
+        - 'host.docker.internal:8191'
+        - 'host.docker.internal:8192'
+        - 'host.docker.internal:8193'

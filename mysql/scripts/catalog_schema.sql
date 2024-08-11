@@ -1,4 +1,5 @@
--- Create tables
+USE catalog_db;
+
 CREATE TABLE IF NOT EXISTS CATEGORY (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,

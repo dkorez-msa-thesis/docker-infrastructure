@@ -1,8 +1,3 @@
-// import { products, categories } from './catalog_data.js';
-// const inventoryData = require('./inventoryData.js');
-
-
-
 
 const products = [
     {

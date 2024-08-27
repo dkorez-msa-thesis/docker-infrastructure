@@ -175,7 +175,7 @@ INSERT INTO PRODUCT_TAG (product_id, tag_id) VALUES
 
 USE order_db;
 
-INSERT INTO `ORDER` (user_id, total_amount, status, created_at, updated_at) VALUES
+INSERT INTO CHECKOUT (user_id, total_amount, status, created_at, updated_at) VALUES
 (1, 1150.00, 'Pending', NOW(), NOW()),    -- Order for iPhone 14 and Sony Headphones
 (2, 1750.00, 'Completed', NOW(), NOW()),  -- Order for MacBook Pro
 (3, 200.00, 'Shipped', NOW(), NOW()),     -- Order for Nike Air Max
@@ -183,7 +183,7 @@ INSERT INTO `ORDER` (user_id, total_amount, status, created_at, updated_at) VALU
 (5, 115.99, 'Completed', NOW(), NOW());   -- Order for The Alchemist and Dumbbell Set
 
 -- Insert meaningful data into ORDER_ITEM table
-INSERT INTO ORDER_ITEM (order_id, product_id, quantity, price, created_at, updated_at) VALUES
+INSERT INTO CHECKOUT_ITEM (checkout_id, product_id, quantity, price, created_at, updated_at) VALUES
 (1, 1, 1, 999.99, NOW(), NOW()), -- Order 1, iPhone 14
 (1, 6, 1, 250.00, NOW(), NOW()), -- Order 1, Sony Headphones
 (2, 3, 1, 1999.99, NOW(), NOW()), -- Order 2, MacBook Pro
@@ -193,7 +193,7 @@ INSERT INTO ORDER_ITEM (order_id, product_id, quantity, price, created_at, updat
 (5, 9, 1, 15.99, NOW(), NOW()), -- Order 5, The Alchemist
 (5, 10, 1, 100.00, NOW(), NOW()); -- Order 5, Dumbbell Set
 
-INSERT INTO PAYMENT (order_id, amount, payment_method, payment_status, created_at, updated_at) VALUES
+INSERT INTO PAYMENT (checkout_id, amount, payment_method, payment_status, created_at, updated_at) VALUES
 (1, 1150.00, 'Credit Card', 'Pending', NOW(), NOW()),   -- Payment for Order 1
 (2, 1999.99, 'PayPal', 'Completed', NOW(), NOW()),      -- Payment for Order 2
 (3, 200.00, 'Credit Card', 'Shipped', NOW(), NOW()),    -- Payment for Order 3

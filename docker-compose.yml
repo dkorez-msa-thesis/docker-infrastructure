@@ -68,6 +68,18 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
   
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    depends_on:
+      - kafka
+      - zookeeper
+    ports:
+      - "8090:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka1:9092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+
   prometheus:
     image: prom/prometheus
     container_name: prometheus
@@ -90,33 +102,6 @@ services:
     ports:
       - 3000:3000
 
-  # uncomment for Kafka UI
-  # schema-registry:
-  #   image: confluentinc/cp-schema-registry:7.7.0
-  #   container_name: schema-registry
-  #   depends_on:
-  #     - kafka
-  #   environment:
-  #     SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:9092
-  #     SCHEMA_REGISTRY_HOST_NAME: schema-registry
-  #   ports:
-  #     - "8081:8081"
-
-  # control-center:
-  #   image: confluentinc/cp-enterprise-control-center:6.2.0
-  #   container_name: control-center
-  #   hostname: control-center
-  #   depends_on:
-  #     - kafka
-  #     - schema-registry
-  #   ports:
-  #     - "9021:9021"
-  #   environment:
-  #     CONTROL_CENTER_BOOTSTRAP_SERVERS: kafka:29092
-  #     CONTROL_CENTER_ZOOKEEPER_CONNECT: zookeeper:2181
-  #     CONTROL_CENTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
-  #     CONTROL_CENTER_REPLICATION_FACTOR: 1
-  #     CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
-  #     CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
-  #     CONFLUENT_METRICS_TOPIC_REPLICATION: 1
-  #     PORT: 9021
+networks:
+  default:
+    name: docker-msa
